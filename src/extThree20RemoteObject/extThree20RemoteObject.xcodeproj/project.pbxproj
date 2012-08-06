@@ -61,6 +61,12 @@
 		2089948815277391009E38AD /* NSMutableArray+Stack.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D45586151E5E2B0043F785 /* NSMutableArray+Stack.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		2089948A15277391009E38AD /* extThree20RemoteObjectTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D45502151E4D2B0043F785 /* extThree20RemoteObjectTests.h */; };
 		2089948C15277391009E38AD /* extThree20RemoteObject+XML_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 2089943115277327009E38AD /* extThree20RemoteObject+XML_Prefix.pch */; };
+		20AB3ADB15CB8F8300BEA4C6 /* TTCloudDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 20AB3AD915CB8F8300BEA4C6 /* TTCloudDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20AB3AE815CB8F9D00BEA4C6 /* TTCloudDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AB3AE615CB8F9D00BEA4C6 /* TTCloudDocument.m */; };
+		20AB3B4515CCF9F500BEA4C6 /* TTCloudDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 20AB3AD915CB8F8300BEA4C6 /* TTCloudDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20AB3B4615CCFA0700BEA4C6 /* TTCloudDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AB3AE615CB8F9D00BEA4C6 /* TTCloudDocument.m */; };
+		20AB3B4715CCFA1100BEA4C6 /* TTCloudDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 20AB3AE615CB8F9D00BEA4C6 /* TTCloudDocument.m */; };
+		20AB3B4815CCFA1C00BEA4C6 /* TTCloudDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 20AB3AD915CB8F8300BEA4C6 /* TTCloudDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20C019CD151EE8C400D35993 /* extThree20RemoteObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C019CC151EE8C400D35993 /* extThree20RemoteObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20C01ACB151EEEB200D35993 /* extThree20RemoteObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D45503151E4D2B0043F785 /* extThree20RemoteObjectTests.m */; };
 		20D454E2151E2C3B0043F785 /* libextThree20RemoteObject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D454CA151E2C3A0043F785 /* libextThree20RemoteObject.a */; };
@@ -278,10 +284,12 @@
 		2089942E1525BDC3009E38AD /* TTValueMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTValueMapper.m; sourceTree = "<group>"; };
 		2089943015277327009E38AD /* extThree20RemoteObject+JSON_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "extThree20RemoteObject+JSON_Prefix.pch"; sourceTree = "<group>"; };
 		2089943115277327009E38AD /* extThree20RemoteObject+XML_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "extThree20RemoteObject+XML_Prefix.pch"; sourceTree = "<group>"; };
-		2089946115277359009E38AD /* libextThree20RemoteObject+JSON.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libextThree20RemoteObject+JSON.a"; path = "libextThree20RemoteObject+JSON.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2089946115277359009E38AD /* libextThree20RemoteObject+JSON.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libextThree20RemoteObject+JSON.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2089946215277383009E38AD /* Library+JSON.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Library+JSON.xcconfig"; sourceTree = "<group>"; };
 		2089946315277383009E38AD /* Library+XML.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Library+XML.xcconfig"; sourceTree = "<group>"; };
-		2089949115277391009E38AD /* libextThree20RemoteObject+XML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libextThree20RemoteObject+XML.a"; path = "libextThree20RemoteObject+XML.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2089949115277391009E38AD /* libextThree20RemoteObject+XML.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libextThree20RemoteObject+XML.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20AB3AD915CB8F8300BEA4C6 /* TTCloudDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTCloudDocument.h; sourceTree = "<group>"; };
+		20AB3AE615CB8F9D00BEA4C6 /* TTCloudDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTCloudDocument.m; sourceTree = "<group>"; };
 		20C019CC151EE8C400D35993 /* extThree20RemoteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extThree20RemoteObject.h; sourceTree = "<group>"; };
 		20C01A21151EED2E00D35993 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../Three20/Three20.xcodeproj; sourceTree = "<group>"; };
 		20D454CA151E2C3A0043F785 /* libextThree20RemoteObject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libextThree20RemoteObject.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,6 +421,7 @@
 				2089943015277327009E38AD /* extThree20RemoteObject+JSON_Prefix.pch */,
 				2089943115277327009E38AD /* extThree20RemoteObject+XML_Prefix.pch */,
 				20C019CC151EE8C400D35993 /* extThree20RemoteObject.h */,
+				20AB3AD915CB8F8300BEA4C6 /* TTCloudDocument.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -431,6 +440,7 @@
 				20D45576151E5DEE0043F785 /* TTObjectModelCollection.m */,
 				20D45577151E5DEE0043F785 /* TTRemoteObject.m */,
 				2089942E1525BDC3009E38AD /* TTValueMapper.m */,
+				20AB3AE615CB8F9D00BEA4C6 /* TTCloudDocument.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -531,6 +541,7 @@
 				2089945515277359009E38AD /* TTRemoteObject.h in Headers */,
 				2089945615277359009E38AD /* extThree20RemoteObject.h in Headers */,
 				2089945715277359009E38AD /* TTValueMapper.h in Headers */,
+				20AB3B4515CCF9F500BEA4C6 /* TTCloudDocument.h in Headers */,
 				2089945815277359009E38AD /* NSMutableArray+Stack.h in Headers */,
 				2089945A15277359009E38AD /* extThree20RemoteObjectTests.h in Headers */,
 				2089945B15277359009E38AD /* extThree20RemoteObject+JSON_Prefix.pch in Headers */,
@@ -552,6 +563,7 @@
 				2089948515277391009E38AD /* TTRemoteObject.h in Headers */,
 				2089948615277391009E38AD /* extThree20RemoteObject.h in Headers */,
 				2089948715277391009E38AD /* TTValueMapper.h in Headers */,
+				20AB3B4815CCFA1C00BEA4C6 /* TTCloudDocument.h in Headers */,
 				2089948815277391009E38AD /* NSMutableArray+Stack.h in Headers */,
 				2089948A15277391009E38AD /* extThree20RemoteObjectTests.h in Headers */,
 				2089948C15277391009E38AD /* extThree20RemoteObject+XML_Prefix.pch in Headers */,
@@ -573,6 +585,7 @@
 				20D45592151E5F660043F785 /* TTRemoteObject.h in Headers */,
 				20C019CD151EE8C400D35993 /* extThree20RemoteObject.h in Headers */,
 				208994251525BDAC009E38AD /* TTValueMapper.h in Headers */,
+				20AB3ADB15CB8F8300BEA4C6 /* TTCloudDocument.h in Headers */,
 				20D4558E151E5E2B0043F785 /* NSMutableArray+Stack.h in Headers */,
 				20D45509151E4D2B0043F785 /* extThree20RemoteObject_Prefix.pch in Headers */,
 				20D4550C151E4D2B0043F785 /* extThree20RemoteObjectTests.h in Headers */,
@@ -833,6 +846,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20AB3B4615CCFA0700BEA4C6 /* TTCloudDocument.m in Sources */,
 				2089944015277359009E38AD /* TTDocumentAttributePointer.m in Sources */,
 				2089944115277359009E38AD /* TTDocumentBackPointer.m in Sources */,
 				2089944215277359009E38AD /* TTDocumentElementPointer.m in Sources */,
@@ -851,6 +865,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20AB3B4715CCFA1100BEA4C6 /* TTCloudDocument.m in Sources */,
 				2089947015277391009E38AD /* TTDocumentAttributePointer.m in Sources */,
 				2089947115277391009E38AD /* TTDocumentBackPointer.m in Sources */,
 				2089947215277391009E38AD /* TTDocumentElementPointer.m in Sources */,
@@ -880,6 +895,7 @@
 				20D45580151E5DEE0043F785 /* TTRemoteObject.m in Sources */,
 				206E5934152239070054EBA7 /* TTDocumentValuePointer.m in Sources */,
 				2089942F1525BDC3009E38AD /* TTValueMapper.m in Sources */,
+				20AB3AE815CB8F9D00BEA4C6 /* TTCloudDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

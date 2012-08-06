@@ -12,4 +12,5 @@
     #import <extThree20XML/GDataXMLNode.h>
     #import <extThree20JSON/extThree20JSON.h>
     #import <extThree20JSON/SBJsonWriter.h>
+    #import <extThree20JSON/SBJsonParser.h>
 #endif

@@ -15,6 +15,7 @@
 //
 
 #import "TTValueMapper.h"
+#import "TTCloudDocument.h"
 
 /**
  * Define the document format.
@@ -61,9 +62,17 @@
      * and local object representation.
      */
     TTValueMapper   *valueMapper;
+    
+    /**
+     * iCloud support.
+     */
+    NSURL           *iCloudUrl;
+    NSMetadataQuery *iCloudQuery;
+    TTCloudDocument *iCloudDocument;
 }
 
 @property int documentFormat;
+@property (nonatomic, strong) TTCloudDocument *iCloudDocument;
 
 /**
  * Methods exposed by this object.
@@ -73,6 +82,18 @@
 -(void)load;
 -(void)registerDelegate:(id<TTRemoteObjectDelegate>)listener;
 -(void)removeDelegate:(id<TTRemoteObjectDelegate>)listener;
+
+/**
+ * iCloud integration.
+ */
+- (NSString *)documentExtensionOnCloud;
+- (void)setupCloudSearch;
+- (void)loadFromCloud:(NSURL *)url;
+-(NSString *)getUniqueName;
+
+-(void)iCloudQueryDidFinishGathering:(NSNotification *)notification;
+-(void)iCloudQueryDidReceiveUpdate:(NSNotification *)notification;
+-(void)iCloudDocumentStateChanged:(NSNotification *)notification;
 
 @end
 

@@ -9,4 +9,5 @@
     #import <Three20/Three20.h>
     #import <extThree20JSON/extThree20JSON.h>
     #import <extThree20JSON/SBJsonWriter.h>
+    #import <extThree20JSON/SBJsonParser.h>
 #endif

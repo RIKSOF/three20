@@ -24,3 +24,4 @@
 #import "extThree20RemoteObject/TTObjectModel.h"
 #import "extThree20RemoteObject/TTObjectModelCollection.h"
 #import "extThree20RemoteObject/TTValueMapper.h"
+#import "extThree20RemoteObject/TTCloudDocument.h"

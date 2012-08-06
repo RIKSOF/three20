@@ -19,6 +19,7 @@
 @implementation TTRemoteObject
 
 @synthesize documentFormat;
+@synthesize iCloudDocument;
 
 #pragma mark Data Loading
 
@@ -241,6 +242,88 @@
  */
 - (BOOL)isOutdated {
     return NO; 
+}
+
+#pragma mark - iCloud Integration
+
+/**
+ * Extension of this object on the cloud. By default we take the class name.
+ */
+- (NSString *)documentExtensionOnCloud {
+    return NSStringFromClass([self class]);  
+}
+
+/**
+ * This is the query used to get document(s) related to this object.
+ */
+- (void)setupCloudSearch {
+    // Cloud is available. We need to subscribe to changes that are relevant to us.
+    iCloudQuery = [[NSMetadataQuery alloc] init];
+    
+    // Where to search and what to search.
+    [iCloudQuery setSearchScopes:[NSArray arrayWithObjects:NSMetadataQueryUbiquitousDocumentsScope, nil]];
+    [iCloudQuery setPredicate:[NSPredicate predicateWithFormat:@"%K LIKE %@",
+                               NSMetadataItemFSNameKey, 
+                               [NSString stringWithFormat:@"*.%@", [self documentExtensionOnCloud]]]];
+}
+
+/**
+ * Load all related objects from cloud.
+ */
+-(void)loadFromCloud:(NSURL *)cloudUrl {
+    if ( cloudUrl != nil ) {
+        iCloudUrl = cloudUrl;
+        
+        // Set up document query.
+        [self setupCloudSearch];
+        
+        // Subscribe to notifications.
+        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+        
+        [defaultCenter addObserver:self selector:@selector(iCloudQueryDidFinishGathering:)
+                              name:NSMetadataQueryDidFinishGatheringNotification
+                            object:nil];
+        [defaultCenter addObserver:self selector:@selector(iCloudQueryDidReceiveUpdate:)
+                              name:NSMetadataQueryDidUpdateNotification 
+                            object:nil];
+        
+        // Start the query
+        [iCloudQuery startQuery];
+    }
+}
+
+/**
+ * Handle notifications. We dont do anything here. The subclasses will
+ * take care of the notifications.
+ */
+-(void)iCloudQueryDidFinishGathering:(NSNotification *)notification {
+    // Once we have received this notification, we need to remove
+    // ourself as an observer.
+    //NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    //[defaultCenter removeObserver:self name:NSMetadataQueryDidFinishGatheringNotification object:nil];
+}
+
+-(void)iCloudQueryDidReceiveUpdate:(NSNotification *)notification {
+    
+}
+
+-(void)iCloudDocumentStateChanged:(NSNotification *)notification {
+    TTCloudDocument *doc = notification.object;
+    
+    // Are we in conflict?
+    if ( doc.documentState & UIDocumentStateInConflict ) {
+        
+    }
+}
+
+/**
+ * This ensures our file names are unique accross devices.
+ */
+-(NSString *)getUniqueName {
+    CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+    NSString * uuidString = (__bridge_transfer NSString*)CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+    CFRelease(newUniqueId);
+    return uuidString;
 }
 
 @end

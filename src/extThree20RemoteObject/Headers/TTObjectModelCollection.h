@@ -38,10 +38,9 @@
     NSString        *primaryKey;
     
     /**
-     * Indicates if we should not reset objects array on new
-     * response.
+     * iCloud Integration.
      */
-    BOOL            doNotRefresh;
+    int             noOfPendingOpen;
 }
 
 @property (nonatomic, strong) NSMutableArray *objects;
