@@ -404,7 +404,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
             // attribute or element node
             
             // do we need to call xmlEncodeSpecialChars?
-            xmlNodeSetContent(xmlNode_, GDataGetXMLString(str));
+            xmlNodeSetContent(xmlNode_, xmlEncodeSpecialChars(NULL, GDataGetXMLString(str)));
         }
     }
 }
