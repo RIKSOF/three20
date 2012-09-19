@@ -299,12 +299,20 @@
  */
 -(void)iCloudQueryDidFinishGathering:(NSNotification *)notification {
     [super iCloudQueryDidFinishGathering:notification];
-    [self syncDocumentsWithCloud];
+    
+    // Is this notification for us?
+    if ( notification.object == iCloudQuery ) {
+        [self syncDocumentsWithCloud];
+    }
 }
 
 -(void)iCloudQueryDidReceiveUpdate:(NSNotification *)notification {
     [super iCloudQueryDidReceiveUpdate:notification];
-    [self syncDocumentsWithCloud];
+
+    // Is this notification for us?
+    if ( notification.object == iCloudQuery ) {
+        [self syncDocumentsWithCloud];
+    }
 }
 
 /**
@@ -313,10 +321,11 @@
 -(void)iCloudDocumentStateChanged:(NSNotification *)notification {
     [super iCloudDocumentStateChanged:notification];
     
+    // Is this notification for us?
     TTCloudDocument *doc = notification.object;
     
     // Is the document state normal?
-    if ( doc.documentState & UIDocumentStateNormal ) {
+    if ( doc == iCloudDocument && doc.documentState & UIDocumentStateNormal ) {
         // Update the list.
         [super didUpdateObject:doc.object atIndexPath:nil];
     }
