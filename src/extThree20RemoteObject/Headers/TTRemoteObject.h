@@ -88,6 +88,7 @@
  */
 - (NSString *)documentExtensionOnCloud;
 - (void)setupCloudSearch;
+- (void)stopCloudSearch;
 - (void)loadFromCloud:(NSURL *)url;
 -(NSString *)getUniqueName;
 

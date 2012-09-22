@@ -270,6 +270,8 @@
                     
                     // If all pending opens are completed, restart query.
                     if ( noOfPendingOpen == 0 ) {
+                        [self stopCloudSearch];
+                        [self setupCloudSearch];
                         [iCloudQuery startQuery];
                     }
                 }];
@@ -290,6 +292,8 @@
     
     // Resume query again if there are no pending opens.
     if ( noOfPendingOpen == 0 ) {
+        [self stopCloudSearch];
+        [self setupCloudSearch];
         [iCloudQuery startQuery];
     }
 }

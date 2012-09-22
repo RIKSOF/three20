@@ -265,6 +265,28 @@
     [iCloudQuery setPredicate:[NSPredicate predicateWithFormat:@"%K LIKE %@",
                                NSMetadataItemFSNameKey, 
                                [NSString stringWithFormat:@"*.%@", [self documentExtensionOnCloud]]]];
+    
+    // Subscribe to notifications.
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    
+    [defaultCenter addObserver:self selector:@selector(iCloudQueryDidFinishGathering:)
+                          name:NSMetadataQueryDidFinishGatheringNotification
+                        object:nil];
+    [defaultCenter addObserver:self selector:@selector(iCloudQueryDidReceiveUpdate:)
+                          name:NSMetadataQueryDidUpdateNotification 
+                        object:nil];
+}
+
+- (void)stopCloudSearch {
+    // Subscribe to notifications.
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+
+    [defaultCenter removeObserver:self name:NSMetadataQueryDidFinishGatheringNotification object:nil];
+    [defaultCenter removeObserver:self name:NSMetadataQueryDidUpdateNotification object:nil];
+    
+    // Stop
+    [iCloudQuery stopQuery];
+    iCloudQuery = nil;
 }
 
 /**
@@ -276,16 +298,6 @@
         
         // Set up document query.
         [self setupCloudSearch];
-        
-        // Subscribe to notifications.
-        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-        
-        [defaultCenter addObserver:self selector:@selector(iCloudQueryDidFinishGathering:)
-                              name:NSMetadataQueryDidFinishGatheringNotification
-                            object:nil];
-        [defaultCenter addObserver:self selector:@selector(iCloudQueryDidReceiveUpdate:)
-                              name:NSMetadataQueryDidUpdateNotification 
-                            object:nil];
         
         // Start the query
         [iCloudQuery startQuery];
