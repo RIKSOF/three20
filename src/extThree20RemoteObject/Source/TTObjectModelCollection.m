@@ -144,11 +144,18 @@
                     [self didUpdateObject:sp atIndexPath:nil];
                     
                 } else {
-                    [objects addObject: sp];
+                    if([self computeIndexForObject:sp] == -1)
+                        [objects addObject: sp];
+                    else
+                        [objects insertObject:sp atIndex:[self computeIndexForObject:sp]];
+
                     [self didInsertObject:sp atIndexPath:nil];
                 }
             } else {
-                [objects addObject: sp];
+                if([self computeIndexForObject:sp] == -1)
+                    [objects addObject: sp];
+                else
+                    [objects insertObject:sp atIndex:[self computeIndexForObject:sp]];
                 [self didInsertObject:sp atIndexPath:nil];
             }
         }
@@ -181,11 +188,17 @@
                     [self didUpdateObject:sp atIndexPath:nil];
                     
                 } else {
-                    [objects addObject: sp];
+                    if([self computeIndexForObject:sp] == -1)
+                        [objects addObject: sp];
+                    else
+                        [objects insertObject:sp atIndex:[self computeIndexForObject:sp]];
                     [self didInsertObject:sp atIndexPath:nil];
                 }
             } else {
-                [objects addObject: sp];
+                if([self computeIndexForObject:sp] == -1)
+                    [objects addObject: sp];
+                else
+                    [objects insertObject:sp atIndex:[self computeIndexForObject:sp]];
                 [self didInsertObject:sp atIndexPath:nil];
             }
         }
@@ -227,7 +240,10 @@
                 
                 if ( [objFileName isEqualToString:docName] ) {
                     found = YES;
-                    [matchingObjects addObject:obj];
+                    if([self computeIndexForObject:obj] == -1)
+                        [matchingObjects addObject: obj];
+                    else
+                        [matchingObjects insertObject:obj atIndex:[self computeIndexForObject:obj]];
                     break;
                 }
             }
@@ -245,7 +261,10 @@
                 sp.iCloudDocument.object = sp;
                 
                 // Remember this as a matching object so that it is not deleted accidentally.
-                [matchingObjects addObject:sp];
+                if([self computeIndexForObject:sp] == -1)
+                    [matchingObjects addObject: sp];
+                else
+                    [matchingObjects insertObject:sp atIndex:[self computeIndexForObject:sp]];
                 
                 // Number of pending open
                 noOfPendingOpen++;
@@ -253,7 +272,10 @@
                 // Open the document.
                 [sp.iCloudDocument openWithCompletionHandler:^(BOOL success) {
                     if ( success ) {
-                        [objects addObject: sp];
+                        if([self computeIndexForObject:sp] == -1)
+                            [objects addObject: sp];
+                        else
+                            [objects insertObject:sp atIndex:[self computeIndexForObject:sp]];
                         [self didInsertObject:sp atIndexPath:nil];
                         
                         // Register for updates on this object.
@@ -405,4 +427,12 @@
     }
 }
  
+/**
+ * Computes index of object
+ * Returns -1 by default
+ */
+-(int)computeIndexForObject:(TTObjectModel *)model{
+    return -1;
+}
+
 @end

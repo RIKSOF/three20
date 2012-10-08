@@ -48,6 +48,6 @@
 // This class' exposed method
 -(void)loadWithArray:(NSArray *)data;
 -(void)removeObject:(TTObjectModel *)model;
-    
+-(int)computeIndexForObject:(TTObjectModel *)model;
 
 @end
