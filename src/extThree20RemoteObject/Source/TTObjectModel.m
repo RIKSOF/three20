@@ -130,8 +130,14 @@
                 [valueMapper documentToObjectForClass:typeClass object:self property:propertyName values:values value:value];
             }
         } else {
+            
             // All these pointers are nil, so we put their checks here.
-            if ( typeClass == [TTDocumentBackPointer class] ) {
+            if ( typeClass == [TTDocumentForwardPointer class] ) {
+                
+                // Push the current xml element to to the stack.
+                [elementsStack push:doc];
+                
+            } else if ( typeClass == [TTDocumentBackPointer class] ) {
                 // Go back to the parent's element.
                 doc = [elementsStack pop];
 #ifdef EXT_REMOTE_XML                
@@ -305,6 +311,63 @@
     } 
 #endif
 
+    // Clean up
+    free(objectProperties);
+}
+
+#pragma mark Serialize object to parameters
+
+/**
+ * Setup an encoder from this object.
+ */
+- (void)serializeToParameters {
+    
+    // Get the list of properties.
+    objc_property_t  *objectProperties;
+    unsigned int     propertiesCount;
+    
+    objectProperties = class_copyPropertyList([self class], &propertiesCount);
+    
+    // Set all properties
+    for ( int i = 0; i < propertiesCount; i++ ) {
+        NSString *propertyName = [NSString stringWithUTF8String:property_getName(objectProperties[i])];
+        
+        // Get the class for this property.
+        const char *type = property_getAttributes(objectProperties[i]);
+        NSString *typeString = [NSString stringWithUTF8String:type];
+        NSArray *attributes = [typeString componentsSeparatedByString:@","];
+        NSString *typeAttribute = [attributes objectAtIndex:0];
+        NSString *typeClassName = nil;
+        Class typeClass = nil;
+        
+        // If this is not a primitive object.
+        if ([typeAttribute length] > 3 ) {
+            typeClassName = [typeAttribute substringWithRange:NSMakeRange(3, [typeAttribute length]-4)];
+            typeClass = NSClassFromString(typeClassName);
+        }
+        
+        // Some properties in the document may conflict with its parent (example: url), or with
+        // Objective-C keywords. The solution is to add an xml prefix to those objects. Here
+        // we remove that prefix. Please note that if the variable itself is named xml in the XML
+        // document, then we would need to name corresponding object as xmlxml.
+        NSString *propertyNameForXML = propertyName;
+        if( [propertyNameForXML hasPrefix:@"xml"]) {
+			propertyNameForXML = [propertyNameForXML substringFromIndex:3];
+		}
+        
+        // Holds the value(s)
+        id value = nil;
+        
+        // Get the value for this property.
+        value = [self valueForKey:propertyName];
+        
+        // Did we get a value? If the value is a string or a number, set it. Otherwise
+        // ignore.
+        if ( value != nil && typeClass == [NSString class] ) {
+            [parameters setValue:value forKey:propertyNameForXML];
+        } 
+    }
+    
     // Clean up
     free(objectProperties);
 }
