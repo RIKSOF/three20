@@ -1065,10 +1065,8 @@
 			baseConfigurationReference = 20D454FA151E4D2B0043F785 /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1096,10 +1094,8 @@
 			baseConfigurationReference = 20D454FA151E4D2B0043F785 /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1119,6 +1115,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20D454F9151E4D2B0043F785 /* Library.xcconfig */;
 			buildSettings = {
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/extThree20RemoteObject.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1130,6 +1127,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20D454F9151E4D2B0043F785 /* Library.xcconfig */;
 			buildSettings = {
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/extThree20RemoteObject.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1170,10 +1168,8 @@
 			baseConfigurationReference = 20D454FA151E4D2B0043F785 /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1193,6 +1189,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20D454F9151E4D2B0043F785 /* Library.xcconfig */;
 			buildSettings = {
+				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/extThree20RemoteObject.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				OTHER_LDFLAGS = "-ObjC";
