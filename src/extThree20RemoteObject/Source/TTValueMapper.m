@@ -313,7 +313,10 @@
              } else
 #endif
              {
-                 [object setValue:value forKey:property];
+                 // If a value for a property was (null) in json, then we check for it
+                 if ( ![value isEqual:[NSNull null]] ) {
+                     [object setValue:value forKey:property];
+                 }
              }
          }];
         
